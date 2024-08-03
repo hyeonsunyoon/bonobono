@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const draggableContainer = document.getElementById("draggableContainer");
+    const draggableArea = document.getElementById("draggableArea");
     const staticImage = document.getElementById("staticImage");
 
     // 이미지 랜덤 위치에 배치
@@ -17,14 +18,24 @@ document.addEventListener("DOMContentLoaded", () => {
     placeImageRandomly(staticImage);
 
     // 충돌 감지 함수
-    function isColliding(el1, el2) {
+    function isColliding(el1, el2, el2OffsetX = 0, el2OffsetY = 0) {
         const rect1 = el1.getBoundingClientRect();
         const rect2 = el2.getBoundingClientRect();
 
-        return !(rect1.right < rect2.left || 
-                 rect1.left > rect2.right || 
-                 rect1.bottom < rect2.top || 
-                 rect1.top > rect2.bottom);
+        const el2CenterX = rect2.left + rect2.width / 2;
+        const el2CenterY = rect2.top + rect2.height / 2;
+
+        const el2CollisionRect = {
+            left: el2CenterX - el2OffsetX / 2,
+            right: el2CenterX + el2OffsetX / 2,
+            top: el2CenterY - el2OffsetY / 2,
+            bottom: el2CenterY + el2OffsetY / 2
+        };
+
+        return !(rect1.right < el2CollisionRect.left || 
+                 rect1.left > el2CollisionRect.right || 
+                 rect1.bottom < el2CollisionRect.top || 
+                 rect1.top > el2CollisionRect.bottom);
     }
 
     // 드래그 기능
@@ -51,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             draggableContainer.style.top = `${y}px`;
 
             // 충돌 감지 및 처리
-            if (isColliding(draggableContainer, staticImage)) {
+            if (isColliding(draggableArea, staticImage, 50, 50)) { // staticImage의 중앙 50x50 영역을 충돌 영역으로 설정
                 placeImageRandomly(draggableContainer);
                 placeImageRandomly(staticImage);
             }
