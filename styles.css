@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f0f0f0;
+}
+
+#draggableContainer {
+    position: absolute;
+}
+
+#draggableImage {
+    width: 200px; /* 첫 번째 이미지의 실제 너비 */
+    height: 150px; /* 첫 번째 이미지의 실제 높이 */
+    position: relative;
+    pointer-events: none; /* 첫 번째 이미지 자체는 클릭 불가능하게 설정 */
+}
+
+#draggableArea {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px; /* 드래그 가능한 영역의 너비 */
+    height: 150px; /* 드래그 가능한 영역의 높이 */
+    cursor: pointer;
+}
+
+#staticImage {
+    width: 100px; /* 두 번째 이미지의 너비 */
+    height: 100px; /* 두 번째 이미지의 높이 */
+    position: absolute;
+}
