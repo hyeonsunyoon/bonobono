@@ -6,7 +6,8 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    background-color: #f0f0f0;
+    background-image: url(assets/groundback.png);
+    background-repeat: repeat;
 }
 
 #draggableContainer {
@@ -14,8 +15,6 @@ body {
 }
 
 #draggableImage {
-    width: 200px; /* 첫 번째 이미지의 실제 너비 */
-    height: 150px; /* 첫 번째 이미지의 실제 높이 */
     position: relative;
     pointer-events: none; /* 첫 번째 이미지 자체는 클릭 불가능하게 설정 */
 }
@@ -31,8 +30,6 @@ body {
 }
 
 #staticImage {
-    width: 100px; /* 두 번째 이미지의 너비 */
-    height: 100px; /* 두 번째 이미지의 높이 */
+
     position: absolute;
 }
- 

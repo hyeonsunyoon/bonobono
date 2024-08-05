@@ -63,7 +63,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // 충돌 감지 및 처리
             if (isColliding(draggableArea, staticImage, 50, 50)) { // staticImage의 중앙 50x50 영역을 충돌 영역으로 설정
-                placeImageRandomly(draggableContainer);
                 placeImageRandomly(staticImage);
             }
         }
